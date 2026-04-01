@@ -9,28 +9,117 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    :root { --text:rgba(0,0,0,0.75); --text-muted:rgba(0,0,0,0.40); --header-h:52px; }
+    :root { --text:rgba(0,0,0,0.75); --text-muted:rgba(0,0,0,0.40); --header-h:52px; --gap:8px; }
     html { font-size:62.5%; }
     body { font-family:'Space Grotesk','Helvetica Neue',Arial,sans-serif; background:#fff; color:var(--text); font-size:1.4rem; letter-spacing:0.02em; -webkit-font-smoothing:antialiased; }
     a { color:inherit; text-decoration:none; }
     a:hover { opacity:0.5; transition:opacity 0.15s; }
+
+    /* ── Header ── */
     header { position:fixed; top:0; left:0; right:0; height:var(--header-h); z-index:200; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:0 2.4rem; background:rgba(255,255,255,0.97); }
     .header-name { font-size:1.4rem; font-weight:500; }
     .header-nav { display:flex; gap:2.8rem; font-size:1.4rem; }
     .header-right { display:flex; justify-content:flex-end; gap:2.8rem; font-size:1.4rem; }
     footer { text-align:center; padding:3.5rem 2rem; font-size:1.2rem; color:var(--text-muted); }
     @media (max-width:600px) { header { grid-template-columns:1fr 1fr; } .header-nav { display:none; } }
+
+    /* ── Page ── */
     main { padding-top:var(--header-h); }
     .project-header { padding:3.5rem 2.4rem 2rem; }
     .project-header h1 { font-size:1.4rem; font-weight:500; margin-bottom:0.8rem; }
-    .project-header .credits { font-size:1.2rem; color:var(--text-muted); line-height:1.8; }
-    .project-header .credits a { color:var(--text-muted); }
-    .photos { max-width:860px; margin:0 auto; padding:0 1.2rem 6rem; display:flex; flex-direction:column; gap:1rem; }
-    .photos img { width:100%; height:auto; display:block; }
-    .back { padding:1.6rem 2.4rem 4rem; font-size:1.2rem; color:var(--text-muted); }
+    .credits { font-size:1.2rem; color:var(--text-muted); line-height:1.8; }
+    .credits a { color:var(--text-muted); }
+
+    /* ── Gallery grid ── */
+    .gallery {
+      column-count: 3;
+      column-gap: var(--gap);
+      padding: 2rem var(--gap) 2rem;
+    }
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: var(--gap);
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .gallery-item:hover img { opacity: 0.88; }
+
+    .back { padding:1rem 2.4rem 4rem; font-size:1.2rem; color:var(--text-muted); }
+
+    @media (max-width:900px) { .gallery { column-count:2; } }
+    @media (max-width:500px) { .gallery { column-count:1; } }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+    }
+
+    /* Close button */
+    .lb-close {
+      position: absolute;
+      top: 2rem; right: 2.4rem;
+      font-size: 2.8rem;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      line-height: 1;
+      background: none;
+      border: none;
+    }
+    .lb-close:hover { color: #fff; }
+
+    /* Arrows */
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.8rem;
+      color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 1rem;
+      line-height: 1;
+      user-select: none;
+    }
+    .lb-prev { left: 1.6rem; }
+    .lb-next { right: 1.6rem; }
+    .lb-prev:hover, .lb-next:hover { color: #fff; }
+
+    /* Counter */
+    .lb-counter {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="header-name"><a href="index.html">Daria Malysheva</a></div>
     <nav class="header-nav">
@@ -61,24 +150,75 @@
       </div>
     </div>
 
-    <div class="photos">
-      <img src="images/sobaka01.jpg" alt="Sobaka.ru">
-      <img src="images/sobaka02.jpg" alt="Sobaka.ru">
-      <img src="images/tnt792_02.jpg" alt="Sobaka.ru">
-      <img src="images/tnt955_01.jpg" alt="Sobaka.ru">
-      <img src="images/sobaka03.jpg" alt="Sobaka.ru">
-      <img src="images/tnt312_01.jpg" alt="Sobaka.ru">
-      <img src="images/tnt852_01.jpg" alt="Sobaka.ru">
-      <img src="images/tnt1054_01.jpg" alt="Sobaka.ru">
-      <img src="images/sobaka04.jpg" alt="Sobaka.ru">
-      <img src="images/tnt756_01.jpg" alt="Sobaka.ru">
-      <img src="images/tnt903_01.jpg" alt="Sobaka.ru">
-      <img src="images/tnt658_01.jpg" alt="Sobaka.ru">
+    <!-- Галерея — клик открывает лайтбокс -->
+    <div class="gallery" id="gallery">
+      <div class="gallery-item"><img src="images/sobaka01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/sobaka02.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt792_02.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt955_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/sobaka03.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt312_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt852_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt1054_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/sobaka04.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt756_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt903_01.jpg" alt="Sobaka.ru"></div>
+      <div class="gallery-item"><img src="images/tnt658_01.jpg" alt="Sobaka.ru"></div>
     </div>
 
     <div class="back"><a href="index.html">← Все проекты</a></div>
   </main>
 
+  <!-- Лайтбокс -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lb-close">&#215;</button>
+    <button class="lb-prev" id="lb-prev">&#8592;</button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-next" id="lb-next">&#8594;</button>
+    <div class="lb-counter" id="lb-counter"></div>
+  </div>
+
   <footer><small>Daria Malysheva 2026 — Moscow, Russia</small></footer>
+
+  <script>
+    const items = Array.from(document.querySelectorAll('.gallery-item img'));
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+    let current = 0;
+
+    function open(index) {
+      current = index;
+      lbImg.src = items[current].src;
+      lbCounter.textContent = (current + 1) + ' / ' + items.length;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function prev() { open((current - 1 + items.length) % items.length); }
+    function next() { open((current + 1) % items.length); }
+
+    items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-prev').addEventListener('click', prev);
+    document.getElementById('lb-next').addEventListener('click', next);
+
+    // Клик по фону — закрыть
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+
+    // Стрелки клавиатуры
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'Escape') close();
+    });
+  </script>
+
 </body>
 </html>
