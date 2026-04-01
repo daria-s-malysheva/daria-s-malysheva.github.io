@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Daria Malysheva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root { --text:rgba(0,0,0,0.75); --text-muted:rgba(0,0,0,0.40); --gap:8px; --header-h:52px; }
+    html { font-size:62.5%; }
+    body { font-family:'Space Grotesk', 'Helvetica Neue', Arial, sans-serif; background:#fff; color:var(--text); font-size:1.4rem; letter-spacing:0.02em; -webkit-font-smoothing:antialiased; }
+    a { color:inherit; text-decoration:none; }
+    a:hover { opacity:0.5; transition:opacity 0.15s; }
+    header { position:fixed; top:0; left:0; right:0; height:var(--header-h); z-index:200; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding:0 2.4rem; background:rgba(255,255,255,0.97); }
+    .header-name { font-size:1.4rem; font-weight:500; }
+    .header-nav { display:flex; gap:2.8rem; font-size:1.4rem; }
+    .header-nav a.active, .header-right a.active { opacity:0.4; pointer-events:none; }
+    .header-right { display:flex; justify-content:flex-end; gap:2.8rem; font-size:1.4rem; }
+    footer { text-align:center; padding:3.5rem 2rem; font-size:1.2rem; color:var(--text-muted); }
+    @media (max-width:600px) { header { grid-template-columns:1fr 1fr; } .header-nav { display:none; } }
+
+    main { padding-top:calc(var(--header-h) + 5rem); padding-bottom:8rem; padding-left:2.4rem; padding-right:2.4rem; max-width:1000px; }
+    .about-grid { display:grid; grid-template-columns:1fr 2fr; gap:4rem; align-items:start; }
+    .about-photo img { width:100%; height:auto; display:block; }
+    .about-text p { font-size:1.4rem; line-height:1.6; margin-bottom:2rem; }
+    .about-text b { font-weight:500; }
+    .about-text .contacts { display:flex; flex-direction:column; gap:0.6rem; margin-top:1rem; }
+    .about-text .contacts .row { display:flex; gap:2rem; font-size:1.4rem; }
+    .about-text .contacts .label { font-weight:500; min-width:90px; }
+    @media (max-width:700px) { .about-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-name"><a href="index.html">Daria Malysheva</a></div>
+    <nav class="header-nav">
+      <a href="editorial.html">Editorial</a>
+      <a href="commercial.html">Commercial</a>
+      <a href="personal.html">Personal</a>
+    </nav>
+    <div class="header-right">
+      <a href="about.html" class="active">About</a>
+      <a href="https://www.instagram.com/daria.s.malysheva/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </header>
+  <main>
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="images/me20154.jpg" alt="Daria Malysheva">
+      </div>
+      <div class="about-text">
+        <p><b>Based in Moscow</b></p>
+        <p><b>Select Clients &amp; Publications:</b><br>
+        Yandex, Sber, T-bank, Forbes, Pravila mag, Kinopoisk, I+D, Sobaka.ru, Inc. Russia</p>
+        <div class="contacts">
+          <div class="row"><span class="label">E-mail</span><a href="mailto:daria.s.malysheva@gmail.com">daria.s.malysheva@gmail.com</a></div>
+          <div class="row"><span class="label">Telegram</span><a href="https://t.me/daria_s_malysheva" target="_blank">daria_s_malysheva</a></div>
+          <div class="row"><span class="label">Instagram</span><a href="https://www.instagram.com/daria.s.malysheva/" target="_blank">@daria.s.malysheva</a></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer><small>Daria Malysheva 2026 — Moscow, Russia</small></footer>
+</body>
+</html>

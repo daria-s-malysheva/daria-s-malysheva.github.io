@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    ЗАМЕНИ "Название Проекта" на реальное название,
+    например: "Maag Style Lab 2.0 — Daria Malysheva"
+  -->
+  <title>Название Проекта — Daria Malysheva</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --text:       rgba(0, 0, 0, 0.75);
+      --text-muted: rgba(0, 0, 0, 0.40);
+      --header-h:   52px;
+    }
+
+    html { font-size: 62.5%; }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background: #fff;
+      color: var(--text);
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: 0.5; transition: opacity 0.15s; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      z-index: 200;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 2.4rem;
+      background: rgba(255, 255, 255, 0.97);
+    }
+
+    .header-name { font-size: 1.4rem; font-weight: 500; }
+    .header-nav { display: flex; gap: 2.8rem; font-size: 1.4rem; }
+    .header-right { display: flex; justify-content: flex-end; gap: 2.8rem; font-size: 1.4rem; }
+
+    /* Project content */
+    main {
+      padding-top: var(--header-h);
+    }
+
+    /* Заголовок проекта */
+    .project-header {
+      padding: 4rem 2.4rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .project-header h1 {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .project-header .meta {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    /* Фотографии проекта — одна колонка по центру */
+    .project-photos {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2.4rem 6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .project-photos img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Плейсхолдер */
+    .photo-placeholder {
+      width: 100%;
+      background: #ebebeb;
+      display: block;
+    }
+
+    /* Навигация между проектами */
+    .project-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem 2.4rem 4rem;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    @media (max-width: 600px) {
+      header { grid-template-columns: 1fr 1fr; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-name">
+      <a href="index.html">Daria Malysheva</a>
+    </div>
+    <nav class="header-nav">
+      <a href="editorial.html">Editorial</a>
+      <a href="commercial.html">Commercial</a>
+      <a href="personal.html">Personal</a>
+    </nav>
+    <div class="header-right">
+      <a href="about.html">About</a>
+      <a href="https://www.instagram.com/daria.s.malysheva/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Заголовок проекта -->
+    <div class="project-header">
+      <h1>Название Проекта</h1>
+      <!--
+        Можно добавить категорию, год, клиента:
+      -->
+      <span class="meta">Editorial, 2024</span>
+    </div>
+
+    <!-- Фотографии -->
+    <div class="project-photos">
+
+      <!--
+        КАК ДОБАВИТЬ ФОТО:
+
+        Для каждой фотографии напиши:
+        <img src="images/project-folder/photo1.jpg" alt="Название проекта">
+
+        ПРИМЕР:
+        <img src="images/maag/maag-01.jpg" alt="Maag Style Lab 2.0">
+        <img src="images/maag/maag-02.jpg" alt="Maag Style Lab 2.0">
+        <img src="images/maag/maag-03.jpg" alt="Maag Style Lab 2.0">
+
+        А пока стоят плейсхолдеры (серые прямоугольники):
+      -->
+
+      <div class="photo-placeholder" style="padding-top: 133%;"></div>
+      <div class="photo-placeholder" style="padding-top: 133%;"></div>
+      <div class="photo-placeholder" style="padding-top: 133%;"></div>
+
+    </div>
+
+    <!-- Навигация: предыдущий / следующий проект -->
+    <div class="project-nav">
+      <a href="index.html">← Все проекты</a>
+      <a href="#">Следующий проект →</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <small>Daria Malysheva 2026 — Moscow, Russia</small>
+  </footer>
+
+</body>
+</html>
